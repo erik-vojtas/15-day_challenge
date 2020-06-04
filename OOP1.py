@@ -9,6 +9,7 @@
 # • Create a new method called “limitPrice(n)” in the ShoppingCart to automatically remove
 # minimum number of items from the cart so that the total price is below the given limit.
 
+
 class ShoppingCart():
     def __init__(self):
         self.dict_of_items = {}
@@ -37,21 +38,31 @@ class ShoppingCart():
         sum = 0
         for k, v in self.dict_of_items.items():
             sum += k.price * v
+        print(f"$ {sum}")
         return sum
 
     def printItemsFromCart(self):
         for k, v in self.dict_of_items.items():
             print({k.name: v}, end= " ")
+        print("\n")
 
-    # def limitPrice(self, limit):
-    #     if self.getTotalPrice() <= limit:
-    #         print("You have enough money to buy all items in your shopping cart!")
-    #     else:
-    #         for k, v in self.dict_of_items.items():
-    #             print(f"The item {k.name} has been deleted")
-    #             del self.dict_of_items[k]
-    #             if self.getTotalPrice() <= limit:
-    #                 break
+    def limitPrice(self, limit):
+        new_dict = {}
+        sum = 0
+        if self.getTotalPrice() <= limit:
+            print("You have enough money to buy all items in your shopping cart!")
+        else:
+            for k, v in self.dict_of_items.items():
+                if k.price <= limit:
+                    sum += k.price * v
+                    if sum <= limit:
+                        new_dict[k] = v
+            value = {k: self.dict_of_items[k] for k in set(self.dict_of_items) - set(new_dict)}
+            for k,v in value.items():
+                print(f"The item {k.name} has been removed from the shopping cart.")
+            self.dict_of_items = new_dict
+        return self.dict_of_items
+
 
 class Item:
     def __init__(self, name, price):
@@ -73,7 +84,9 @@ print(sc1.getTotalPrice())
 sc2.addItem(watch)
 # sc1.pour(sc2)
 sc1+sc2
-print(sc1.getTotalPrice())
+sc1.getTotalPrice()
 
 sc1.printItemsFromCart()
-# sc1.limitPrice(200)
+sc1.limitPrice(100)
+sc1.printItemsFromCart()
+sc1.getTotalPrice()
