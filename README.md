@@ -9,3 +9,6 @@ Day 2 (02.06.2020)  - Mean.py
 Day 3 (03.06.2020)  - OOP1.py
 
 Day 4 (04.06.2020)  - Iterator.py
+
+Day 5 (05.06.2020)  - Generator.py
+                      Decorator.py
