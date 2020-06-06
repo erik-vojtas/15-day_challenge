@@ -91,13 +91,27 @@ print("-------------------------")
 
 def bold(f):
     def wrappedUpFunct():
-        print(f"<b>{f()}</b>")
+        return f"<b>{f()}</b>"
     return wrappedUpFunct
+
+def italic(f):
+    def wrappedUpFunct():
+        return f"<i>{f()}</i>"
+    return wrappedUpFunct
+
+def underline(f):
+    def wrappedUpFunct():
+        return f"<u>{f()}</u>"
+    return wrappedUpFunct
+
+
 
 # @bold
 # @italic
 # @underline
 
+@underline
+@italic
 @bold
 def mp():
     return "hello world"
