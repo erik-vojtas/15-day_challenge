@@ -4,7 +4,9 @@ from bs4 import BeautifulSoup, SoupStrainer
 import requests
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from time import time
+import gc
 
+#---------------------------------------------------------------------------------
 # start = time.perf_counter()  #start time counter
 #
 # def do_something(seconds):
@@ -35,9 +37,8 @@ from time import time
 #
 # print(f'Finished in {round(finish-start, 2)} second(s)')
 #
-# print("-----------------------------")
 
-
+#---------------------------------------------------------------------------------
 # • Write a Python Class that runs as a separate thread and returns the number of URLS referenced by a given website. (Hint: Use Beautifulsoup to parse the HTML)
 # • Run n threads concurrently to get the number of links in n different sites.
 # • The main program sums up the results from all the threads and displays the total number of links in the given sites.
@@ -47,7 +48,7 @@ from time import time
 # sum up the results of the threads that are finished
 # print the total number when all the threads have finished execution
 
-
+#---------------------------------------------------------------------------------
 
 list_of_urls = ["http://stackoverflow.com/", "http://orf.at", "http://google.com", "http://bbc.co.uk", "https://www.channelnewsasia.com/news/international", "https://www.bbc.com"]
 sum = 0
@@ -62,7 +63,7 @@ def getURLs(url):
     return len(urlsOfPage)
 
 start = time()
-
+#---------------------------------------------------------------------------------
 # processes = []
 # with ThreadPoolExecutor(max_workers=10) as executor:
 #     for url in list_of_urls:
@@ -71,30 +72,53 @@ start = time()
 # for task in as_completed(processes):
 #     print(task.result())
 
-
-# threads = []
-# counter = 1
-# for url in list_of_urls:
-#     t = threading.Thread(target=getURLs, args=(url,))
-#     t.start()
-#     print(f"Thread number {counter} has started.")
-#     threads.append(t)
-#     counter += 1
-#
-# c = 1
-# for thread in threads:
-#     thread.join()
-#     print(f"Thread number {c} has finished.")
-#     c+=1
-
-for i, url in enumerate(list_of_urls):
-    n = i+1
+#---------------------------------------------------------------------------------
+threads = []
+counter = 1
+for url in list_of_urls:
     t = threading.Thread(target=getURLs, args=(url,))
     t.start()
-    print(f"Thread {n} has started")
-    t.join()
-    print(f"Thread {n} has finished")
+    print(f"Thread number {counter} has started.")
+    threads.append(t)
+    counter += 1
 
+c = 1
+for thread in threads:
+    thread.join()
+    print(f"Thread number {c} has finished.")
+    c+=1
+
+#---------------------------------------------------------------------------------
+# class URL(threading.Thread):
+#     def __init__(self, url):
+#         threading.Thread.__init__(self)
+#         self.url = url
+#         self.total_urls = 0
+#
+#     def run(self):
+#         urlsOfPage = []
+#         soup = BeautifulSoup(requests.get(self.url).content, "html.parser")
+#         for link in soup.find_all('a'):
+#             urlsOfPage.append(link.get('href'))
+#         print(f"URL: {self.url} has access to {len(urlsOfPage)} URLs")
+#         return len(urlsOfPage)
+#
+# url1 = URL("http://orf.at")
+# url2 = URL("http://stackoverflow.com/")
+# url3 = URL("http://google.com")
+# url4 = URL("http://bbc.co.uk")
+# url5 = URL("https://www.channelnewsasia.com/news/international")
+#
+# threads = []
+# for obj in gc.get_objects():
+#     if isinstance(obj, URL):
+#         obj.start()
+#
+# for obj in gc.get_objects():
+#     if isinstance(obj, URL):
+#        obj.join()
+
+#---------------------------------------------------------------------------------
 
 
 print(f"Total number of URLs: {sum}.")
