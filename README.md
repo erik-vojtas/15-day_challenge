@@ -14,3 +14,5 @@ Day 5 (05.06.2020)  - Generator.py
                       Decorator.py
                       
 Day 6 (06.06.2020)  - Threads.py
+
+Day 7 (07.06.2020)  - FB.py
