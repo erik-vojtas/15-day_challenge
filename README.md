@@ -18,3 +18,5 @@ Day 6 (06.06.2020)  - Threads.py
 Day 7 (07.06.2020)  - FB.py
 
 Day 8 (08.06.2020)  - FB2.py
+
+Day 9 (09.06.2020)  - OOP2.py
