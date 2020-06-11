@@ -22,3 +22,5 @@ Day 8 (08.06.2020)  - FB2.py
 Day 9 (09.06.2020)  - OOP2.py
 
 Day 10 (10.06.2020)  - OOP3.py, OOP4.py
+
+Day 11 (11.06.2020)  - TrickyQuestions.py
