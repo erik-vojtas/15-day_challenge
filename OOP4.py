@@ -28,15 +28,15 @@ class Supermarket:
             if k == article:
                 if amount <= v:
                     self.articles[article] -= amount
-                    print(f"Article {article.name}, amount: {amount} article(s) have been sold. Amount: {self.articles[article]} article(s) is left.")
+                    print(f"Article {article.name}, amount: {amount} article(s) has/have been sold. Amount: {self.articles[article]} article(s) is/are left.")
                 else:
-                    print(f"There is not enough articles in {self.name}. Amount: {self.articles[article]} article(s) is left.")
+                    print(f"There is not enough articles in {self.name}. Amount: {self.articles[article]} article(s) is/are left.")
 
 
     def __repr__(self):
         list = []
         for k,v in self.articles.items():
-            list.append({k.name : k.price})
+            list.append({k.name : v})
         return f"{self.name} offer these articles:\n{[x for x in list]}"
 
 a1 = Article ("Fresh Soap 200g", "hygiene")
@@ -56,3 +56,4 @@ mk.discountAktion(0.25, "fruits" ) # 25% discount on fruits
 print(mk) # prints all items in supermarket
 
 mk.sellArticle(a1, 4)
+print(mk)
