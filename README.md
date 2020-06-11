@@ -23,4 +23,4 @@ Day 9 (09.06.2020)  - OOP2.py
 
 Day 10 (10.06.2020)  - OOP3.py, OOP4.py
 
-Day 11 (11.06.2020)  - TrickyQuestions.py
+Day 11 (11.06.2020)  - TrickyQuestions.py, SpecialMethods.py
