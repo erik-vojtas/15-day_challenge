@@ -43,6 +43,7 @@ s1 = Student("Sandy") # name
 s2 = Student("Spili") # name
 s3 = Student("Waile") # name
 
+
 print(s1+s2+s3)
 
 s4 = Student("Waile") # name
