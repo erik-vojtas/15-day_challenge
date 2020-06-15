@@ -119,3 +119,19 @@ def mp():
 print(mp())
 
 print("-------------------------")
+
+def isGreater100(fn):
+    def wrapperFunct(num):
+        if fn(num) < 100:
+            print("smaller or equal to 100")
+        else:
+            print("bigger than 100")
+    return wrapperFunct
+
+@isGreater100
+def somecalculation(num):
+    # complex stuff here
+    return num
+
+somecalculation(200)
+print("-------------------------")
